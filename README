@@ -1,0 +1,18 @@
+
+Steps:
+
+* Create authenticate endpoint that authenticates using AuthenticationManager and generates token
+* Create JwtUtil that create, parses and validates token
+* Create a request filter that intercepts request. If token is present and valid then set securitycontext with userdetails so that all future security configs are by passed
+* Create UserDetailsService
+* COnfigure WebCOnfigurerAdatper that 
+	* Create a passwordencoder to be used
+	* Register userdetails and passwordencoder with AuthenticationManager
+	* Configure HttpSecurity to allow /authenticate endpoint,
+	  authenticate all requests,
+	  set AuthenticationEntryPoint that return 401 response instead of redirecting,
+	  register jwtFilter to act before UsernamePasswordAuthenticationfilter,
+	  set session policy to stateless
+	  
+	
+	
